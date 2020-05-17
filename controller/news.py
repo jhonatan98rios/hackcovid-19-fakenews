@@ -6,7 +6,7 @@ from xml.etree import ElementTree as ET
 import requests
 import metadata_parser
 
-nltk.download('punkt')
+#nltk.download('punkt')
 
 class NewsSearch():
 
@@ -40,3 +40,12 @@ class NewsSearch():
             img_ulr.append('')
         return img_url
 
+    def build_dict(self, text):
+        kw = self.get_keywords(text)
+        titles, links = self.find_news(kw)
+        imgs = self.get_img_url(links)
+        json = dict()
+        json['url'] = links
+        json['title'] = titles
+        json['imageUrl'] = imgs
+        return json
