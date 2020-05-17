@@ -11,10 +11,10 @@ class WhatsappClassifier():
         news = ns.build_dict(sample)
         message = ''
 
-        for i in range(len(news['title'])):
+        for i in range(3):
             message = message + news["title"][i] + '\n' + news["url"][i] + '\n\n'
-
-        return message
+            
+        return str(message)
 
 
     def whatsapp_reply(self, sample):
@@ -38,7 +38,7 @@ class WhatsappClassifier():
         # Cria a resposta
         wp = self.whatsapp_builder(sample, result[0])
         resp = MessagingResponse()
-        msg = resp.message(str(wp))
+        msg = resp.message(wp)
         msg.media(media)
 
         return str(resp)
