@@ -9,22 +9,22 @@ import nltk
 class Classifier():
 
     def __init__(self, path):
-        self.thres = 0.705
+        self.thres = 0.576
         self.path = path
         #self.stopwords = nltk.corpus.stopwords.words('portuguese')
 
     def stopwords(self):
         with open(self.path + 'portuguese') as f:
             lines = f.readlines()
-        words = [line[:-1] for line in lines]
+        words = [line[:-2] for line in lines]
         return words
 
     def get_model(self):
-        model = joblib.load(self.path + 'clf_model.joblib')
+        model = joblib.load(self.path + 'clf_voting.joblib')
         return model
 
     def get_vectorizer(self):
-        vectorizer = joblib.load(self.path + 'tfidf.joblib')
+        vectorizer = joblib.load(self.path + 'tfidf_voting.joblib')
         return vectorizer
 
     def preprocessing(self, text):
@@ -47,4 +47,5 @@ class Classifier():
         else:
             msg = 'Essa noticia parece verdadeira'
         return (msg.upper(), prob)
+
 
