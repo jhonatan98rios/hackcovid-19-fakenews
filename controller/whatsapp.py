@@ -9,10 +9,10 @@ class WhatsappClassifier():
     def whatsapp_builder(self, sample, resp):
         ns = NewsSearch()
         news = ns.build_dict(sample)
-        message = ''
+        message = '\n' + str(resp)
 
         for i in range(3):
-            message = message + news["title"][i] + '\n' + news["url"][i] + '\n\n'
+            message = message + '\n\n' + news["title"][i] + '\n' + news["url"][i]
             
         return str(message)
 
