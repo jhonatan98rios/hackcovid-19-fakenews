@@ -20,7 +20,7 @@ def news_validator():
         cl = Classifier('./models/')
         sample = request.json["sample"]
         result = cl.make_classification(sample)
-        json = { 'result': result[0], "percentage": result[1] }
+        json = { 'results': result[0], "percentage": result[1] }
     else:
         json = { 'result': 'Error', "percentage": "Error" }
 
@@ -38,7 +38,7 @@ def whatsapp_reply():
             sample = request.json["sample"]
         wc = WhatsappClassifier()
         result = wc.whatsapp_reply(sample)
-        json = { 'result': result[0], "percentage": result[1] }
+        json = { 'results': result[0], "percentage": result[1] }
     else:
         json = { 'result': 'Error', "percentage": "Error" }
 
