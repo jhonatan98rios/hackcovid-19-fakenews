@@ -17,10 +17,10 @@ class WhatsappClassifier():
         result = cl.make_classification(sample)
 
         # Define a imagem
-        media = REALLY_TRUTH_URL
-        media = MAYBE_TRUTH_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA FALSA' else media
-        media = MAYBE_FALSE_URL if result[0] == 'ESSA NOTICIA PARECE VERDADEIRA' else media
-        media = REALLY_FALSE_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA VERDADEIRA' else media
+        media = REALLY_TRUTH_URL if result[0] == 'ESSA NOTICIA PARECE VERDADEIRA' else 'https://dummyimage.com/300x300/000/fff.jpg'
+        media = MAYBE_TRUTH_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA VERDADEIRA' else media
+        media = MAYBE_FALSE_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA FALSA' else media
+        media = REALLY_FALSE_URL if result[0] == 'ESSA NOTICIA PARECE FALSA' else media
 
         # Cria a resposta
         resp = MessagingResponse()
