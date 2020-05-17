@@ -6,7 +6,7 @@ from xml.etree import ElementTree as ET
 import requests
 import metadata_parser
 
-#nltk.download('punkt')
+nltk.download('punkt')
 
 class NewsSearch():
 
