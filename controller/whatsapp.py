@@ -19,17 +19,17 @@ class WhatsappClassifier():
 
     def whatsapp_reply(self, sample):
 
-        REALLY_TRUTH_URL = "https://t1.ea.ltmcdn.com/pt/images/4/2/0/cachorro_feliz_recomendacoes_gerais_23024_orig.jpg"
-        MAYBE_TRUTH_URL = "https://dummyimage.com/300x300/000/6fa.jpg"
-        MAYBE_FALSE_URL = "https://dummyimage.com/300x300/000/fc3.jpg"
-        REALLY_FALSE_URL = "https://i.pinimg.com/originals/e4/a5/33/e4a533fca82e142230182129793682b6.jpg"
+        REALLY_TRUTH_URL = "https://i.imgur.com/FQpbutt.png"
+        MAYBE_TRUTH_URL = "https://i.imgur.com/IHJ1fNs.png"
+        MAYBE_FALSE_URL = "https://i.imgur.com/dcHwOE1.png"
+        REALLY_FALSE_URL = "https://i.imgur.com/NrSoyyC.png"
 
         # Classificador
         cl = Classifier('./models/')
         result = cl.make_classification(sample)
 
         # Define a imagem
-        media = REALLY_TRUTH_URL if result[0] == 'ESSA NOTICIA PARECE VERDADEIRA' else 'https://dummyimage.com/300x300/000/fff.jpg'
+        media = 'https://i.imgur.com/FQpbutt.png'
         media = MAYBE_TRUTH_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA VERDADEIRA' else media
         media = MAYBE_FALSE_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA FALSA' else media
         media = REALLY_FALSE_URL if result[0] == 'ESSA NOTICIA PARECE FALSA' else media
