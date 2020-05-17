@@ -4,7 +4,8 @@ import nlpnet
 nlpnet.set_data_dir('./models/pos-pt/')
 from xml.etree import ElementTree as ET
 import requests
-import nltk
+
+nltk.download('punkt')
 
 class NewsSearch():
 
