@@ -14,7 +14,6 @@ class WhatsappClassifier():
         for i in range(len(news['title'])):
             message = message + news["title"][i] + '\n' + news["url"][i] + '\n\n'
 
-        print(message)
         return message
 
 
