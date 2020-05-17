@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return jsonify({"result": "ESSA NOTICIA PARECE VERDADEIRA"})
+    return jsonify({"percentage": 0.7572562842863373, "results": "ESSA NOTICIA PARECE FALSA"})
 
 
 # Main classifier
@@ -47,7 +47,7 @@ def whatsapp_reply():
         result = wc.whatsapp_reply(sample)
         json = { 'results': result[0], 'percentage': result[1] }
     else:
-        json = { 'result': 'Error', 'percentage': 'Error', 'news': 'Error' }
+        json = { 'result': 'Error', 'percentage': 'Error' }
 
     return json
 
