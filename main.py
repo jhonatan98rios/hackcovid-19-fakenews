@@ -4,25 +4,32 @@ from flask import Flask, jsonify, request
 
 from controller.classifier import Classifier
 from controller.whatsapp import WhatsappClassifier
+from controller.news import NewsSearch
 
 app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return jsonify({"message": "Hello World"})
+    return jsonify({"result": "ESSA NOTICIA PARECE VERDADEIRA"})
 
 
 # Main classifier
 @app.route("/news_validator", methods=['POST'])
 def news_validator():
 
+    cl = Classifier('./models/')
+    ns = NewsSearch()
+
     if request.json:
-        cl = Classifier('./models/')
         sample = request.json["sample"]
         result = cl.make_classification(sample)
-        json = { 'results': result[0], "percentage": result[1] }
+
+        keywords = ns.get_keywords(sample)
+        news = ns.find_news(keywords)
+
+        json = { 'results': result[0], 'percentage': result[1], 'news': news }
     else:
-        json = { 'result': 'Error', "percentage": "Error" }
+        json = { 'result': 'Error', 'percentage': 'Error', 'news': 'Error' }
 
     return json
 
@@ -38,9 +45,9 @@ def whatsapp_reply():
             sample = request.json["sample"]
         wc = WhatsappClassifier()
         result = wc.whatsapp_reply(sample)
-        json = { 'results': result[0], "percentage": result[1] }
+        json = { 'results': result[0], 'percentage': result[1] }
     else:
-        json = { 'result': 'Error', "percentage": "Error" }
+        json = { 'result': 'Error', 'percentage': 'Error', 'news': 'Error' }
 
     return json
 
