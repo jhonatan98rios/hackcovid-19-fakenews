@@ -2,8 +2,20 @@ from twilio.twiml.messaging_response import MessagingResponse
 #API para se comunicar com o WhatsApp
 
 from controller.classifier import Classifier
+from controller.news import NewsSearch
 
 class WhatsappClassifier():
+
+    def whatsapp_builder(self, sample, resp):
+        ns = NewsSearch()
+        news = ns.build_dict(sample)
+        message = ''
+
+        for i in range(len(news['title'])):
+            message = message + news["title"][i] + '\n' + news["url"][i] + '\n\n'
+
+        return message
+
 
     def whatsapp_reply(self, sample):
 
@@ -22,9 +34,11 @@ class WhatsappClassifier():
         media = MAYBE_FALSE_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA FALSA' else media
         media = REALLY_FALSE_URL if result[0] == 'ESSA NOTICIA PARECE FALSA' else media
 
+
         # Cria a resposta
+        wp = self.whatsapp_builder(sample, result[0])
         resp = MessagingResponse()
-        msg = resp.message(str(result[0]))
+        msg = resp.message(str(wp))
         msg.media(media)
 
         return str(resp)
