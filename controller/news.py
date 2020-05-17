@@ -1,7 +1,7 @@
 import nltk
-nltk.data.path.append('./models/')
+nltk.data.path.append('../models/')
 import nlpnet
-nlpnet.set_data_dir('./models/pos-pt/')
+nlpnet.set_data_dir('../models/pos-pt/')
 from xml.etree import ElementTree as ET
 import requests
 import metadata_parser
@@ -32,12 +32,13 @@ class NewsSearch():
 
     def get_img_url(self, links):
         img_url = []
-        try:
-            metadata = metadata_parser.MetadataParser(link, search_head_only=True)
-            img_link = metadata.get_metadata_link('image')
-            img_url.append(img_link)
-        except:
-            img_url.append('')
+        for link in links:
+            try:
+                metadata = metadata_parser.MetadataParser(link, search_head_only=True)
+                img_link = metadata.get_metadata_link('image')
+                img_url.append(img_link)
+            except:
+                img_url.append('')
         return img_url
 
     def build_dict(self, text):
@@ -49,3 +50,4 @@ class NewsSearch():
         json['title'] = titles
         json['imageUrl'] = imgs
         return json
+
