@@ -16,7 +16,7 @@ class WhatsappClassifier():
         resp.message(str(result))
 
 
-        return resp
+        return str(resp)
 
 
     def whatsapp_reply_2(self, sample):
@@ -32,8 +32,6 @@ class WhatsappClassifier():
         
         msg = resp.message(result[0])
         msg.media(happy_dog_url)
-    # Tentei fazer com que, se a notícia fosse falsa, aparecesse a imagem do cachorro triste, mas está difícil :(
-         
 
         return str(resp)
 

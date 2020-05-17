@@ -45,11 +45,8 @@ def whatsapp_reply():
             sample = request.json["sample"]
         wc = WhatsappClassifier()
         result = wc.whatsapp_reply(sample)
-        json = { 'results': result[0], 'percentage': result[1] }
-    else:
-        json = { 'result': 'Error', 'percentage': 'Error' }
 
-    return json
+    return result
 
 
 if __name__ == "__main__":
