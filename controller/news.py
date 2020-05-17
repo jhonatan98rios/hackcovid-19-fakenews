@@ -27,7 +27,6 @@ class NewsSearch():
         tree = ET.fromstring(response.content)
         links = [link.text for link in tree.findall('channel/item/link')[:3]]
         titles = [title.text for title in tree.findall('channel/item/title')[:3]]
-        print(links)
         return (titles, links)
 
     def get_img_url(self, links):
