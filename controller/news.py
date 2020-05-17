@@ -1,5 +1,5 @@
 import nltk
-nltk.data.path.append('../models/')
+nltk.data.path.append('./models/')
 import nlpnet
 nlpnet.set_data_dir('./models/pos-pt/')
 from xml.etree import ElementTree as ET
