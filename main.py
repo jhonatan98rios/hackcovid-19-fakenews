@@ -23,8 +23,9 @@ def news_validator():
     if request.json:
         sample = request.json["sample"]
         result = cl.make_classification(sample)
+        news = ns.build_dict(sample)
 
-        json = ns.build_dict(sample)
+        json = { 'result': result[0], 'percentage': result[1], 'news': news }
     else:
         json = { 'result': 'Error', 'percentage': 'Error', 'news': 'Error' }
 
