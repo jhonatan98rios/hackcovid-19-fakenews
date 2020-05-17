@@ -7,10 +7,10 @@ class WhatsappClassifier():
 
     def whatsapp_reply(self, sample):
 
-        REALLY_TRUTH_URL = "https://i.pinimg.com/originals/83/2b/34/832b34e5e61f5e7d45da478f2c545e53.gif"
-        MAYBE_TRUTH_URL = "https://media.tenor.com/images/1dd2bc5ce366262629bd8d7d6b0e674a/tenor.gif"
-        MAYBE_FALSE_URL = "https://loonylabs.files.wordpress.com/2016/08/dog-staring-at-cupcakes-gif.gif"
-        REALLY_FALSE_URL = "https://4.bp.blogspot.com/-0RRfcGdCTiI/VquKv3DhdmI/AAAAAAAB1oo/HdknqIR9tl0/s1600/5a991a2337f9dbd0feb3f648264c421c.gif"
+        REALLY_TRUTH_URL = "https://dummyimage.com/300x300/000/3a3.jpg"
+        MAYBE_TRUTH_URL = "https://dummyimage.com/300x300/000/6f6.jpg"
+        MAYBE_FALSE_URL = "https://dummyimage.com/300x300/000/fc3.jpg"
+        REALLY_FALSE_URL = "https://dummyimage.com/300x300/000/f33.jpg"
 
         # Classificador
         cl = Classifier('./models/')
