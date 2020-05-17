@@ -26,7 +26,7 @@ class NewsSearch():
         response = requests.get(url)
         tree = ET.fromstring(response.content)
         links = [link.text for link in tree.findall('channel/item/link')[:3]]
-        titles = [title.text for title in tree.findall('channel/item/title)[:3]]
+        titles = [title.text for title in tree.findall('channel/item/title')[:3]]
         print(links)
         return (titles, links)
 
@@ -37,7 +37,7 @@ class NewsSearch():
             img_link = metadata.get_metadata_link('image')
             img_url.append(img_link)
         except:
-            img_ulr.append('')
+            img_url.append('')
         return img_url
 
     def build_dict(self, text):

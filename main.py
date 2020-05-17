@@ -24,10 +24,7 @@ def news_validator():
         sample = request.json["sample"]
         result = cl.make_classification(sample)
 
-        keywords = ns.get_keywords(sample)
-        news = ns.find_news(keywords)
-
-        json = { 'results': result[0], 'percentage': result[1], 'news': news }
+        json = ns.build_dict(sample)
     else:
         json = { 'result': 'Error', 'percentage': 'Error', 'news': 'Error' }
 
