@@ -10,10 +10,11 @@ class WhatsappClassifier():
         # Classificador
         cl = Classifier('./models/')
         result = cl.make_classification(sample)
+        teste = "Hello World"
 
         # Cria a resposta
         resp = MessagingResponse()
-        resp.message(str(result))
+        resp.message(str(teste))
 
 
         return result
