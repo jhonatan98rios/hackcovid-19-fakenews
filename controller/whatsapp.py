@@ -9,7 +9,7 @@ class WhatsappClassifier():
     def whatsapp_builder(self, sample, resp):
         ns = NewsSearch()
         news = ns.build_dict(sample)
-        message = '\n' + str(resp)
+        message = f'\n *{str(resp)}*'
 
         for i in range(3):
             message = message + '\n\n' + news["title"][i] + '\n' + news["url"][i]
@@ -29,7 +29,7 @@ class WhatsappClassifier():
         result = cl.make_classification(sample)
 
         # Define a imagem
-        media = 'https://i.imgur.com/FQpbutt.png'
+        media = REALLY_TRUTH_URL
         media = MAYBE_TRUTH_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA VERDADEIRA' else media
         media = MAYBE_FALSE_URL if result[0] == 'NAO SEI, ESSA NOTICIA TALVEZ SEJA FALSA' else media
         media = REALLY_FALSE_URL if result[0] == 'ESSA NOTICIA PARECE FALSA' else media
