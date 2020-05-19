@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 from controller.classifier import Classifier
 from controller.whatsapp import WhatsappClassifier
 from controller.news import NewsSearch
-from databases.db import DBConnection
+#from databases.db import DBConnection
 
 app = Flask(__name__)
 
@@ -20,13 +20,13 @@ def news_validator():
 
     cl = Classifier('./models/')
     ns = NewsSearch()
-    db = DBConnection()
+    #db = DBConnection()
 
     if request.json:
         sample = request.json["sample"]
         result = cl.make_classification(sample)
         news = ns.build_dict(sample)
-        db.save_sample(sample, result[0])
+        #db.save_sample(sample, result[0])
 
         # Define a cor
         color = 4

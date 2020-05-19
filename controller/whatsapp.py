@@ -3,7 +3,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 from controller.classifier import Classifier
 from controller.news import NewsSearch
-from databases.db import DBConnection
+#from databases.db import DBConnection
 
 class WhatsappClassifier():
 
@@ -30,8 +30,8 @@ class WhatsappClassifier():
         result = cl.make_classification(sample)
 
         # Salva no banco
-        db = DBConnection()
-        db.save_sample(sample, result[0])
+        # db = DBConnection()
+        # db.save_sample(sample, result[0])
 
         # Define a imagem
         media = REALLY_TRUTH_URL
