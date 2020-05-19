@@ -46,6 +46,6 @@ class Classifier():
             msg = 'Nao sei, essa noticia talvez seja verdadeira'
         else:
             msg = 'Essa noticia parece verdadeira'
-        return (msg.upper(), prob)
+        return (msg.upper(), round(100*prob))
 
 
