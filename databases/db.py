@@ -4,7 +4,7 @@ from databases.auth import dbuser, dbpassword
 class DBConnection:
     def __init__(self):
         try:
-            self.client = pymongo.MongoClient(f"mongodb://{dbuser}:{dbpassword}@ds163757.mlab.com:63757/heroku_9407v38l")
+            self.client = pymongo.MongoClient(f"mongodb://{dbuser}:{dbpassword}@ds163757.mlab.com:63757/heroku_9407v38l?retryWrites=false")
             #self.database = self.client["HackCovid-19"]  # Access DataBase
             self.database = self.client["heroku_9407v38l"]  # Access DataBase
             self.collection = self.database["Collection_01"]  # Access collection
