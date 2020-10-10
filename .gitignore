@@ -1,2 +1,4 @@
 ENV/
 databases/auth.py
+
+.DS_Store
