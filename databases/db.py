@@ -9,8 +9,8 @@ class DBConnection:
     def __init__(self):
         try:
             self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.t0gwi.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority")
-            self.database = self.client["SmartGadget"]
-            self.collection = self.collection["phrases"]
+            self.database = self.client["FarejaFatos"]
+            self.collection = self.collection["Samples"]
 
 
         except pymongo.errors.AutoReconnect as e:
