@@ -1,10 +1,14 @@
+import os
 import pymongo
-from databases.auth import dbuser, dbpassword
+# from databases.auth import dbuser, dbpassword
+
+dbuser = os.environ['USER']
+dbpassword = os.environ['MONGO']
 
 class DBConnection:
     def __init__(self):
         try:
-            self.client = pymongo.MongoClient("mongodb+srv://<username>:<password>@cluster0.t0gwi.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority")
+            self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.t0gwi.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority")
             self.database = self.client["SmartGadget"]
             self.collection = self.collection["phrases"]
 
