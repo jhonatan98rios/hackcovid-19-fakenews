@@ -10,7 +10,7 @@ class DBConnection:
         try:
             self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.t0gwi.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority")
             self.database = self.client["FarejaFatos"]
-            self.collection = self.collection["Samples"]
+            self.collection = self.database["Samples"]
 
 
         except pymongo.errors.AutoReconnect as e:
