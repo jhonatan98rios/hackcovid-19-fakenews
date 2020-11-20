@@ -56,6 +56,6 @@ class NewsSearch():
                 }
             return array
         else:
-            return "Error to get news"
+            return "Erro ao buscar notícias semelhantes"
         
 
