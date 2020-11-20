@@ -26,7 +26,7 @@ def news_validator():
         sample = request.json["sample"]
         result = cl.make_classification(sample)
         news = ns.build_dict(sample)
-        #db.save_sample(sample, result[0])
+        db.save_sample(sample, result[0])
 
         # Define a cor
         color = 4
