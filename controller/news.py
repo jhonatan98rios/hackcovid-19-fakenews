@@ -44,9 +44,28 @@ class NewsSearch():
         kw = self.get_keywords(text)
         titles, links = self.find_news(kw)
         imgs = self.get_img_url(links)
+        
+        array = [dict(), dict(), dict()]
+
+        for i in range(len(array)):
+            array[i] = {
+                'link': links[i],
+                'title': titles[i],
+                'img': imgs[i]
+            }
+
+        print(array)
+
+        return array
+
+
+    """ def build_dict(self, text):
+        kw = self.get_keywords(text)
+        titles, links = self.find_news(kw)
+        imgs = self.get_img_url(links)
         json = dict()
         json['url'] = links
         json['title'] = titles
         json['imageUrl'] = imgs
-        return json
+        return json """
 
