@@ -1,9 +1,9 @@
 import os
 import pymongo
-# from databases.auth import dbuser, dbpassword
+from databases.auth import dbuser, dbpassword
 
-dbuser = os.environ['USER']
-dbpassword = os.environ['MONGO']
+""" dbuser = os.environ['USER']
+dbpassword = os.environ['MONGO'] """
 
 class DBConnection:
     def __init__(self):
@@ -12,6 +12,8 @@ class DBConnection:
             self.database = self.client["FarejaFatos"]
             self.collection = self.database["Samples"]
 
+            """ self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.t0gwi.gcp.mongodb.net/FarejaFatos?retryWrites=true&w=majority")
+            self.collection = self.client["Samples"] """
 
         except pymongo.errors.AutoReconnect as e:
             print(f"Could not connect to server: {e}")
