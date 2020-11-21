@@ -1,28 +1,24 @@
 import os
 import pymongo
-from databases.auth import dbuser, dbpassword
+""" from databases.auth import dbuser, dbpassword """
 
-""" dbuser = os.environ['USER']
-dbpassword = os.environ['MONGO'] """
+dbuser = os.environ['USER']
+dbpassword = os.environ['PASS']
 
 class DBConnection:
     def __init__(self):
         try:
-            self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.t0gwi.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority")
+            self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.oqiei.gcp.mongodb.net/FarejaFatos?retryWrites=true&w=majority")
             self.database = self.client["FarejaFatos"]
             self.collection = self.database["Samples"]
-
-            """ self.client = pymongo.MongoClient("mongodb+srv://"+dbuser+":"+dbpassword+"@cluster0.t0gwi.gcp.mongodb.net/FarejaFatos?retryWrites=true&w=majority")
-            self.collection = self.client["Samples"] """
 
         except pymongo.errors.AutoReconnect as e:
             print(f"Could not connect to server: {e}")
 
-    def save_sample(self, sample, label):
+    def save_sample(self, sample):
         self.collection.insert_one({
             'sample': sample,
-            'label': label
-            })
+        })
 
     def read_samples(self):
         data = self.collection.find({})
@@ -30,7 +26,6 @@ class DBConnection:
         for sample in data:
             document = {
                 "sample" : sample['sample'],
-                "label" : sample['label']
             }
             array.append(document)
         return array 
